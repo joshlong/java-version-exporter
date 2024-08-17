@@ -63,6 +63,15 @@ So, assuming the following usage:
         id: jve
 ```
 
+or if you have the java version in another property like the release property:
+
+```yaml
+      - uses: joshlong/java-version-export-github-action@v17
+        id: jve
+        with:
+          maven-expression: 'maven.compiler.release'
+```
+
 You can use the exported environment variable:
 
 ```

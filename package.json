@@ -1,26 +1,14 @@
 {
   "name": "java-version-exporter",
-  "version": "1.0.0",
   "description": "A github action to evaluate and export the version of Java as both a step output and an environment variable as gleemed from reading the root Maven pom.xml file",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joshlong/java-version-exporter.git"
+    "url": "git+https://github.com/BetonQuest/java-version-exporter.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/joshlong/java-version-exporter/issues"
-  },
-  "homepage": "https://github.com/joshlong/java-version-exporter#readme",
   "dependencies": {
-    "@actions/core": "^1.10.0",
+    "@actions/core": "^1.10.1",
     "@actions/exec": "^1.1.1",
-    "@actions/github": "^5.1.1",
-    "tmp": "^0.2.1"
+    "@actions/github": "^6.0.0"
   }
 }

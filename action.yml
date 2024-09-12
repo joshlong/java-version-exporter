@@ -8,5 +8,5 @@ inputs:
     default: "maven.compiler.target"
 
 runs:
-  using: "node16"
-  main: "dist/index.js"
+  using: "node20"
+  main: "index.js"

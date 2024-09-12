@@ -1,6 +1,12 @@
 name: "java-version-export-github-action"
 description: "Exports the version of Java specified in pom.xml for use in configuring the version of Java to be used in the github action job"
 
+inputs:
+  maven-expression:
+    description: "The Maven expression to evaluate for the java version"
+    required: false
+    default: "maven.compiler.target"
+
 runs:
-  using: "node16"
-  main: "dist/index.js"
+  using: "node20"
+  main: "index.js"

@@ -32,7 +32,6 @@ function cmd(cmd, args, stdoutListener) {
 }
 
 try {
-
     const maven = fs.existsSync('pom.xml')
     const gradleGroovy = fs.existsSync('build.gradle')
     const gradleKotlin = fs.existsSync('build.gradle.kts')
@@ -41,16 +40,16 @@ try {
     console.log(gradleGroovy)
     console.log(gradleKotlin)
 
-    if (maven) { // maven build
+    if (maven) {
+        const mavenExpression = core.getInput('maven-expression');
         cmd(
             "mvn",
             [
                 "help:evaluate",
                 "-q",
                 "-DforceStdout",
-                "-Dexpression=maven.compiler.target",
+                `-Dexpression=${mavenExpression}`,
             ],
-            // ["help:evaluate", "-q", "-DforceStdout", "-Dexpression=java.version"],
             (outputBuffer) => {
                 const output = outputBuffer.toString();
                 console.log(output);
@@ -64,23 +63,19 @@ try {
                 });
             }
         );
-    }  //
-    else {
+    } else {
         if (gradleGroovy || gradleKotlin) {
             cmd("./gradlew", [ ':properties','--property','sourceCompatibility' ], outputBuffer => {
                 const buff = outputBuffer.toString();
-                if (buff.indexOf ('sourceCompatibility')!=-1) {
-                  console.log ('sourceCompatibility: ' + buff)
+                if (buff.indexOf('sourceCompatibility') != -1) {
+                    console.log('sourceCompatibility: ' + buff)
+                } else {
+                    console.log('nope!')
                 }
-                else {
-                   console.log ('nope!')
-                }
-                
-                
             });
         }
     }
 } catch (error) {
     core.setFailed(error.message);
-}  
+}
 
